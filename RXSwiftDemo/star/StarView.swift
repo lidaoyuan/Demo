@@ -336,7 +336,7 @@ extension StarView {
         //属性同上
         burst.birthRate = 1.0
         burst.velocity = 0
-        burst.scale     = 2.5
+        burst.scale = 2.5
         burst.redSpeed = -1.5
         burst.blueSpeed = 1.5
         burst.greenSpeed = 1.0

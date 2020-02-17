@@ -31,6 +31,13 @@
 		DE5E11CB23F530C800ABCFF2 /* GridViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5E11CA23F530C800ABCFF2 /* GridViewLayout.swift */; };
 		DE5E11CE23F6310E00ABCFF2 /* StarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5E11CD23F6310E00ABCFF2 /* StarView.swift */; };
 		DE5E11D023F64B1B00ABCFF2 /* StarRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5E11CF23F64B1B00ABCFF2 /* StarRateView.swift */; };
+		DE5E11D323FA29D700ABCFF2 /* DouBanAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5E11D223FA29D700ABCFF2 /* DouBanAPI.swift */; };
+		DE5E11D523FA326000ABCFF2 /* DouBan.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5E11D423FA326000ABCFF2 /* DouBan.swift */; };
+		DE5E11D723FA377500ABCFF2 /* DouBanNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5E11D623FA377500ABCFF2 /* DouBanNetworkService.swift */; };
+		DE5E11D923FA577D00ABCFF2 /* GitHubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5E11D823FA577D00ABCFF2 /* GitHubAPI.swift */; };
+		DE5E11DB23FA58F500ABCFF2 /* GitHubNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5E11DA23FA58F500ABCFF2 /* GitHubNetworkService.swift */; };
+		DE5E11DD23FA591400ABCFF2 /* GitHubModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5E11DC23FA591400ABCFF2 /* GitHubModel.swift */; };
+		DE5E11DF23FA597700ABCFF2 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5E11DE23FA597700ABCFF2 /* ViewModel.swift */; };
 		DEEEBDA223F4DD510009884D /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEEBDA123F4DD510009884D /* PlayerView.swift */; };
 		DEEEBDA423F4E7A70009884D /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEEBDA323F4E7A70009884D /* PlayerViewController.swift */; };
 /* End PBXBuildFile section */
@@ -89,6 +96,13 @@
 		DE5E11CA23F530C800ABCFF2 /* GridViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridViewLayout.swift; sourceTree = "<group>"; };
 		DE5E11CD23F6310E00ABCFF2 /* StarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarView.swift; sourceTree = "<group>"; };
 		DE5E11CF23F64B1B00ABCFF2 /* StarRateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRateView.swift; sourceTree = "<group>"; };
+		DE5E11D223FA29D700ABCFF2 /* DouBanAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DouBanAPI.swift; sourceTree = "<group>"; };
+		DE5E11D423FA326000ABCFF2 /* DouBan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DouBan.swift; sourceTree = "<group>"; };
+		DE5E11D623FA377500ABCFF2 /* DouBanNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DouBanNetworkService.swift; sourceTree = "<group>"; };
+		DE5E11D823FA577D00ABCFF2 /* GitHubAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAPI.swift; sourceTree = "<group>"; };
+		DE5E11DA23FA58F500ABCFF2 /* GitHubNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubNetworkService.swift; sourceTree = "<group>"; };
+		DE5E11DC23FA591400ABCFF2 /* GitHubModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubModel.swift; sourceTree = "<group>"; };
+		DE5E11DE23FA597700ABCFF2 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		DEEEBDA123F4DD510009884D /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		DEEEBDA323F4E7A70009884D /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -169,6 +183,7 @@
 		DE12EFDF23F1242C009521E6 /* RXSwiftDemo */ = {
 			isa = PBXGroup;
 			children = (
+				DE5E11D123FA29AE00ABCFF2 /* network */,
 				DE5E11CC23F630BE00ABCFF2 /* star */,
 				DEEEBDA023F4DD2C0009884D /* player */,
 				DE12F02823F3DD34009521E6 /* animation */,
@@ -226,6 +241,20 @@
 				DE5E11CF23F64B1B00ABCFF2 /* StarRateView.swift */,
 			);
 			path = star;
+			sourceTree = "<group>";
+		};
+		DE5E11D123FA29AE00ABCFF2 /* network */ = {
+			isa = PBXGroup;
+			children = (
+				DE5E11D223FA29D700ABCFF2 /* DouBanAPI.swift */,
+				DE5E11D423FA326000ABCFF2 /* DouBan.swift */,
+				DE5E11D623FA377500ABCFF2 /* DouBanNetworkService.swift */,
+				DE5E11D823FA577D00ABCFF2 /* GitHubAPI.swift */,
+				DE5E11DA23FA58F500ABCFF2 /* GitHubNetworkService.swift */,
+				DE5E11DC23FA591400ABCFF2 /* GitHubModel.swift */,
+				DE5E11DE23FA597700ABCFF2 /* ViewModel.swift */,
+			);
+			path = network;
 			sourceTree = "<group>";
 		};
 		DEEEBDA023F4DD2C0009884D /* player */ = {
@@ -480,20 +509,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				DEEEBDA223F4DD510009884D /* PlayerView.swift in Sources */,
+				DE5E11D523FA326000ABCFF2 /* DouBan.swift in Sources */,
 				DE12EFE523F1242C009521E6 /* ViewController.swift in Sources */,
 				DE5E11C823F52FF600ABCFF2 /* CollectionViewCell.swift in Sources */,
 				DE5E11D023F64B1B00ABCFF2 /* StarRateView.swift in Sources */,
 				DE12F01923F151B2009521E6 /* PeopleViewModel.swift in Sources */,
+				DE5E11D923FA577D00ABCFF2 /* GitHubAPI.swift in Sources */,
 				DE12EFE123F1242C009521E6 /* AppDelegate.swift in Sources */,
 				DE5E11C523F52FB300ABCFF2 /* GridViewController.swift in Sources */,
 				DE12F02023F28880009521E6 /* TableViewCell.swift in Sources */,
 				DE12F02723F39663009521E6 /* SemiModalView.swift in Sources */,
+				DE5E11DD23FA591400ABCFF2 /* GitHubModel.swift in Sources */,
 				DE12F01D23F28698009521E6 /* ListViewController.swift in Sources */,
+				DE5E11D723FA377500ABCFF2 /* DouBanNetworkService.swift in Sources */,
+				DE5E11DF23FA597700ABCFF2 /* ViewModel.swift in Sources */,
 				DE5E11CB23F530C800ABCFF2 /* GridViewLayout.swift in Sources */,
 				DE12F01B23F27C4A009521E6 /* BuyAnimationManager.swift in Sources */,
 				DE12F02523F395D4009521E6 /* DetailViewController.swift in Sources */,
+				DE5E11D323FA29D700ABCFF2 /* DouBanAPI.swift in Sources */,
 				DEEEBDA423F4E7A70009884D /* PlayerViewController.swift in Sources */,
 				DE5E11CE23F6310E00ABCFF2 /* StarView.swift in Sources */,
+				DE5E11DB23FA58F500ABCFF2 /* GitHubNetworkService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

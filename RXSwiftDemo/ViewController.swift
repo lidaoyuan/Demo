@@ -10,25 +10,122 @@ import UIKit
 import RxSwift
 import RxCocoa
 import Moya
-
+import Moya_ObjectMapper
 class ViewController: UIViewController {
 
-    @IBOutlet weak var button1: UIButton!
-    @IBOutlet weak var button2: UIButton!
+ 
+    lazy var tableView: UITableView = {
+        let tableView = UITableView(frame:self.view.frame, style:.plain)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        return tableView
+    }()
     
-    @IBOutlet weak var textView: UITextView!
-    @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var textField: UITextField!
-    var tableView:UITableView!
+    lazy var searchBar: UISearchBar = {
+        let searchBar = UISearchBar(frame: CGRect(x: 0, y: 0,
+                                                   width: self.view.bounds.size.width, height: 56))
+        return searchBar
+    }()
+    
     let disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        codeStart()
+//        codeStart()
 
+//        request()
+//        douBanList()
+        
+        gitHub()
     }
 
     
+    func gitHub() {
+        self.view.addSubview(tableView)
+        tableView.tableHeaderView =  self.searchBar
+        
+//        let searchAction = searchBar.rx.text.orEmpty
+//            .throttle(0.5, scheduler: MainScheduler.instance)
+//            .distinctUntilChanged()
+//            .asObservable()
+        
+        let searchAction = searchBar.rx.text.orEmpty.asDriver().throttle(0.5).distinctUntilChanged()
+        
+        let viewModel = ViewModel(searchAction: searchAction)
+        
+//        viewModel.navigationTitle.bind(to: self.navigationItem.rx.title).disposed(by: disposeBag)
+//
+//        viewModel.repositories.bind(to: tableView.rx.items(cellIdentifier: "cell")) { (index, element, cell) in
+//            cell.textLabel?.text = element.name
+//
+//        }.disposed(by: disposeBag)
+        
+        viewModel.navigationTitle.drive(self.navigationItem.rx.title).disposed(by: disposeBag)
+        
+        viewModel.repositories.drive(tableView.rx.items(cellIdentifier: "cell")) { (index, element, cell) in
+            cell.textLabel?.text = element.name
+
+        }.disposed(by: disposeBag)
+        
+        tableView.rx.modelSelected(GitHubRepository.self).subscribe(onNext: { (item) in
+            print(item.fullName as Any)
+            print(item.description as Any)
+            }).disposed(by: disposeBag)
+        
+    
+    }
+    
+    
+    func douBanList() {
+        self.view.addSubview(tableView)
+        
+//        let data = DouBanProvider.rx.request(.channels)
+//            .mapObject(Douban.self)
+//            .map{ $0.channels ?? [] }
+//            .asObservable()
+        
+        let data = DouBanNetworkService().loadChannels()
+        
+        
+        data.bind(to: tableView.rx.items(cellIdentifier: "cell")) { (index, element, cell) in
+            cell.textLabel?.text = element.name
+            cell.accessoryType = .disclosureIndicator
+        }.disposed(by: disposeBag)
+        
+        tableView.rx.modelSelected(Channel.self)
+            .map { $0.channelId! }
+            .flatMap {DouBanProvider.rx.request(.playList($0))}.mapObject(Playlist.self)
+            .subscribe(onNext: { (playlist) in
+                if playlist.song.count > 0 {
+                    let artist = playlist.song[0].artist!
+                    let title = playlist.song[0].title!
+                    let message = "歌手：\(artist)\n歌曲：\(title)"
+                    print("歌曲信息：" + message)
+                }
+                
+            }).disposed(by: disposeBag)
+    }
+    
+    
+    func request() {
+        DouBanProvider.rx.request(.channels)
+            .mapObject(Douban.self)
+            .subscribe(onSuccess: { (douban) in
+//            let str = String(data: resp.data, encoding: String.Encoding.utf8)
+//            print("返回的数据是：", str ?? "")
+              if let channels = douban.channels {
+                  print("--- 共\(channels.count)个频道 ---")
+                  for channel in channels {
+                      if let name = channel.name, let channelId = channel.channelId {
+                          print("\(name) （id:\(channelId)）")
+                      }
+                  }
+              }
+                
+                
+        }) { (error) in
+            print("数据请求失败!错误原因：", error)
+        }.disposed(by: disposeBag)
+    }
     
     //纯代码
     func codeStart() {
@@ -43,15 +140,5 @@ class ViewController: UIViewController {
         
     }
    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        for touch in touches {
-//            let tapPoint = touch.location(in: self.view)
-//            let offset = tapPoint.x
-//            let starOffset = offset / (self.bounds.size.width / self.starCount)
-//            
-//        }
-//        print("111111111111111")
-    }
-    
 }
 
