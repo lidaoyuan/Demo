@@ -7,3 +7,16 @@
 //
 
 import Foundation
+import RxSwift
+
+struct Person {
+    var name: String
+    var age: Int
+    
+}
+
+struct PeopleListModel {
+    let data = Observable.just([
+    ])
+    
+}

@@ -14,17 +14,31 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+//        let starview = StarView.init(frame: CGRect.init(x: (UIScreen.main.bounds.width - 320)/2, y: 100, width: 320, height: 100), starCount: 8, currentStar: 0, rateStyle: .half) { (current) -> (Void) in
+//        //            print(current)
+//                }
+//            self.view.addSubview(starview)
+        
+        let starView = StarRateView(frame: CGRect(x: 0, y: 100, width: 414, height: 100), numberOfStars: 5, currentStarCount: 1.5)
+        starView.userPanEnabled = true
+        starView.isUserInteractionEnabled = false
+        self.view.addSubview(starView)
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        let narrowedModalView = SemiModalView(size:  CGSize(width: UIScreen.main.bounds.width, height: 300), baseViewController: navigationController!)
+//        narrowedModalView.contentView.backgroundColor = UIColor.white
+//
+//        let label = UILabel.init(frame: CGRect(x: 100, y: 100, width: 100, height: 20))
+//        label.textColor = UIColor.black
+//        label.textAlignment = .center
+//        label.font = UIFont.systemFont(ofSize: 16)
+//        label.text = "暂无内容"
+//        narrowedModalView.contentView.addSubview(label)
+//
+//        narrowedModalView.open()
     }
-    */
 
 }
