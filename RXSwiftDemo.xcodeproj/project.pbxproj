@@ -38,6 +38,8 @@
 		DE5E11DB23FA58F500ABCFF2 /* GitHubNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5E11DA23FA58F500ABCFF2 /* GitHubNetworkService.swift */; };
 		DE5E11DD23FA591400ABCFF2 /* GitHubModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5E11DC23FA591400ABCFF2 /* GitHubModel.swift */; };
 		DE5E11DF23FA597700ABCFF2 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5E11DE23FA597700ABCFF2 /* ViewModel.swift */; };
+		DE5E11E123FA7CF600ABCFF2 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5E11E023FA7CF600ABCFF2 /* Validation.swift */; };
+		DE5E11E323FA7E4500ABCFF2 /* GitHubSignupService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5E11E223FA7E4500ABCFF2 /* GitHubSignupService.swift */; };
 		DEEEBDA223F4DD510009884D /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEEBDA123F4DD510009884D /* PlayerView.swift */; };
 		DEEEBDA423F4E7A70009884D /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEEEBDA323F4E7A70009884D /* PlayerViewController.swift */; };
 /* End PBXBuildFile section */
@@ -103,6 +105,8 @@
 		DE5E11DA23FA58F500ABCFF2 /* GitHubNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubNetworkService.swift; sourceTree = "<group>"; };
 		DE5E11DC23FA591400ABCFF2 /* GitHubModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubModel.swift; sourceTree = "<group>"; };
 		DE5E11DE23FA597700ABCFF2 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		DE5E11E023FA7CF600ABCFF2 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
+		DE5E11E223FA7E4500ABCFF2 /* GitHubSignupService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubSignupService.swift; sourceTree = "<group>"; };
 		DEEEBDA123F4DD510009884D /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		DEEEBDA323F4E7A70009884D /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -253,6 +257,8 @@
 				DE5E11DA23FA58F500ABCFF2 /* GitHubNetworkService.swift */,
 				DE5E11DC23FA591400ABCFF2 /* GitHubModel.swift */,
 				DE5E11DE23FA597700ABCFF2 /* ViewModel.swift */,
+				DE5E11E023FA7CF600ABCFF2 /* Validation.swift */,
+				DE5E11E223FA7E4500ABCFF2 /* GitHubSignupService.swift */,
 			);
 			path = network;
 			sourceTree = "<group>";
@@ -514,12 +520,14 @@
 				DE5E11C823F52FF600ABCFF2 /* CollectionViewCell.swift in Sources */,
 				DE5E11D023F64B1B00ABCFF2 /* StarRateView.swift in Sources */,
 				DE12F01923F151B2009521E6 /* PeopleViewModel.swift in Sources */,
+				DE5E11E323FA7E4500ABCFF2 /* GitHubSignupService.swift in Sources */,
 				DE5E11D923FA577D00ABCFF2 /* GitHubAPI.swift in Sources */,
 				DE12EFE123F1242C009521E6 /* AppDelegate.swift in Sources */,
 				DE5E11C523F52FB300ABCFF2 /* GridViewController.swift in Sources */,
 				DE12F02023F28880009521E6 /* TableViewCell.swift in Sources */,
 				DE12F02723F39663009521E6 /* SemiModalView.swift in Sources */,
 				DE5E11DD23FA591400ABCFF2 /* GitHubModel.swift in Sources */,
+				DE5E11E123FA7CF600ABCFF2 /* Validation.swift in Sources */,
 				DE12F01D23F28698009521E6 /* ListViewController.swift in Sources */,
 				DE5E11D723FA377500ABCFF2 /* DouBanNetworkService.swift in Sources */,
 				DE5E11DF23FA597700ABCFF2 /* ViewModel.swift in Sources */,

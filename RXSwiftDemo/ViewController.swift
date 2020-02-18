@@ -13,7 +13,16 @@ import Moya
 import Moya_ObjectMapper
 class ViewController: UIViewController {
 
- 
+    @IBOutlet weak var usernameOutlet: UITextField!
+    @IBOutlet weak var usernameValidationOutlet: UILabel!
+    
+    @IBOutlet weak var passwordOutlet: UITextField!
+    @IBOutlet weak var passwordValidationOutlet: UILabel!
+    
+    @IBOutlet weak var repeatedPasswordOutlet: UITextField!
+    @IBOutlet weak var repeatedPasswordValidationOutlet: UILabel!
+    @IBOutlet weak var signupOutlet: UIButton!
+    
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame:self.view.frame, style:.plain)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -35,9 +44,49 @@ class ViewController: UIViewController {
 //        request()
 //        douBanList()
         
-        gitHub()
+//        gitHub()
+        
+        login()
     }
 
+    
+    func login() {
+        let viewModel = GitHubSignupViewModel(
+            input: (
+                username: usernameOutlet.rx.text.orEmpty.asDriver(),
+                password: passwordOutlet.rx.text.orEmpty.asDriver(),
+                repeatedPassword: repeatedPasswordOutlet.rx.text.orEmpty.asDriver(), loginTaps:
+                signupOutlet.rx.tap.asSignal()),
+            dependency: (
+                networkService: GitHubNetworkService(),
+                signupService: GitHubSignupService()))
+        
+        //用户名验证结果绑定
+        viewModel.validatedUsername
+            .drive(usernameValidationOutlet.rx.validationResult)
+            .disposed(by: disposeBag)
+        
+        //密码验证结果绑定
+        viewModel.validatedPassword
+            .drive(passwordValidationOutlet.rx.validationResult)
+            .disposed(by: disposeBag)
+        
+        //再次输入密码验证结果绑定
+        viewModel.validatedPasswordRepeated
+            .drive(repeatedPasswordValidationOutlet.rx.validationResult)
+            .disposed(by: disposeBag)
+        
+        //注册按钮是否可用
+        viewModel.signupEnabled.drive(onNext: { [unowned self] (valid) in
+            self.signupOutlet.isEnabled = valid
+            self.signupOutlet.alpha = valid ? 1.0 : 0.3
+            }).disposed(by: disposeBag)
+        
+        //注册结果绑定
+        viewModel.signupResult.drive(onNext: { (result) in
+            print("注册" + (result ? "成功" : "失败") + "!")
+            }).disposed(by: disposeBag)
+    }
     
     func gitHub() {
         self.view.addSubview(tableView)
@@ -142,3 +191,9 @@ class ViewController: UIViewController {
    
 }
 
+
+extension ViewController {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+}
